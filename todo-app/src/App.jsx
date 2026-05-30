@@ -9,6 +9,8 @@ export default function App() {
 
   const [inputValue, setInputValue] = useState("");
   const [filtro, setFiltro] = useState("todos");
+  const totalTareas = todos.length;
+  const tareasCompletadas = todos.filter(todo => todo.completed).length;
 
   useEffect(() => {
     localStorage.setItem('mis_tareas', JSON.stringify(todos));
@@ -85,6 +87,14 @@ export default function App() {
           </li>
         ))}
       </ul>
-    </div>
+
+        <div style={{ marginTop: '20px', fontSize: '14', color: '#555' }}>
+          {totalTareas === 0 ? (
+            <p>No tienes tareas guardadas.</p>
+          ) : (
+          <p>Progreso: {tareasCompletadas} de {totalTareas} tareas completadas</p>
+        )}
+       </div>
+       </div>
   )
 }
