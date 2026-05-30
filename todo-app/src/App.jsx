@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function App() {
 
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Aprender las bases de React', completed: false },
-    { id: 2, text: 'Subir este proyecto a GitHub', completed: false }
-  ])
+  const [todos, setTodos] = useState(() => {
+    const tareasGuardadas = localStorage.getItem('mis_tareas');
+    return tareasGuardadas ? JSON.parse(tareasGuardadas) : [];
+  });
 
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem('mis_tareas', JSON.stringify(todos));
+  }, [todos]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
