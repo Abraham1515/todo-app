@@ -8,6 +8,7 @@ export default function App() {
   });
 
   const [inputValue, setInputValue] = useState("");
+  const [filtro, setFiltro] = useState("todos");
 
   useEffect(() => {
     localStorage.setItem('mis_tareas', JSON.stringify(todos));
@@ -36,6 +37,14 @@ export default function App() {
     setTodos(nuevasTareas);
   }
 
+  const tareasFilstradas = todos.filter(todo => {
+    if (filtro === "activas") return !todo.completed; 
+    if (filtro === "completadas") return todo.completed;
+    return true;
+  })
+
+
+
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
       <h1>Mi Lista de Tareas</h1>
@@ -49,9 +58,15 @@ export default function App() {
         />
         <button type="submit">Añadir</button>
       </form>
+
+      <div style={{ marginTop: '15px', marginBottom: '15px' }}>
+        <button onClick={() => setFiltro("todos")}>Todas</button>
+        <button onClick={() => setFiltro("activas")}>Activas</button>
+        <button onClick={() => setFiltro("completadas")}>Completadas</button>
+      </div>
       
       <ul>
-        {todos.map(todo => (
+        {tareasFilstradas.map(todo => (
           <li 
             key={todo.id}
             style={{ 
