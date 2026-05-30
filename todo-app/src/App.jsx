@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import './assets/app.css';
 
 export default function App() {
 
@@ -88,13 +89,13 @@ export default function App() {
         ))}
       </ul>
 
-        <div style={{ marginTop: '20px', fontSize: '14', color: '#555' }}>
-          {totalTareas === 0 ? (
-            <p>No tienes tareas guardadas.</p>
-          ) : (
-          <p>Progreso: {tareasCompletadas} de {totalTareas} tareas completadas</p>
-        )}
-       </div>
-       </div>
-  )
-}
+    <div style={{ marginTop: '20px', fontSize: '14px', color: '#f0f0f0' }}>
+            {totalTareas === 0 ? (
+              <p>No tienes tareas guardadas.</p>
+            ) : (
+              <p>Progreso: {tareasCompletadas} de {totalTareas} tareas completadas</p>
+            )}
+          </div>
+        </div>
+      )
+    }
