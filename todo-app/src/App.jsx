@@ -91,7 +91,7 @@ export default function App() {
 
     <div style={{ marginTop: '20px', fontSize: '14px', color: '#f0f0f0' }}>
             {totalTareas === 0 ? (
-              <p>No tienes tareas guardadas.</p>
+              <p>No tienes tareas guardadas</p>
             ) : (
               <p>Progreso: {tareasCompletadas} de {totalTareas} tareas completadas</p>
             )}
